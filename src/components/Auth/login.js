@@ -1,26 +1,17 @@
 import React from "react";
 import firebase from "../../firebase";
-import {
-  Grid,
-  Form,
-  Segment,
-  Button,
-  Header,
-  Message,
-  Icon
-} from "semantic-ui-react";
+import { Grid, Form, Segment, Button, Header, Message, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-// login component
+// Updated login component with a Slack-like design
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
     errors: [],
-    loading: false
+    loading: false,
   };
 
-  displayErrors = errors =>
-    errors.map((error, i) => <p key={i}>{error.message}</p>);
+  displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -40,7 +31,7 @@ class Login extends React.Component {
           console.error(err);
           this.setState({
             errors: this.state.errors.concat(err),
-            loading: false
+            loading: false,
           });
         });
     }
@@ -49,35 +40,32 @@ class Login extends React.Component {
   isFormValid = ({ email, password }) => email && password;
 
   handleInputError = (errors, inputName) => {
-    return errors.some(error => error.message.toLowerCase().includes(inputName))
-      ? "error"
-      : "";
+    return errors.some(error => error.message.toLowerCase().includes(inputName)) ? "error" : "";
   };
 
   render() {
     const { email, password, errors, loading } = this.state;
 
     return (
-      <Grid textAlign="center" verticalAlign="middle" className="app">
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" icon color="black" textAlign="center">
-            <Icon name="coffee" color="red" />
-            Login to chai
+      <Grid textAlign="center" verticalAlign="middle" className="app" style={{ backgroundColor: '#f8f8f9' }}>
+        <Grid.Column style={{ maxWidth: 450, backgroundColor: 'white', padding: '20px', boxShadow: '0 4px 14px 0 rgba(0,0,0,0.2)' }}>
+          <Header as="h2" color="blue" textAlign="center" style={{ marginBottom: '20px' }}>
+            <Icon name="slack hash" color="blue" />
+            Log in to your account
           </Header>
-          <Form onSubmit={this.handleSubmit} size="large">
+          <Form size="large" onSubmit={this.handleSubmit}>
             <Segment stacked>
               <Form.Input
                 fluid
                 name="email"
-                icon="mail"
+                icon="user"
                 iconPosition="left"
-                placeholder="Email Address"
+                placeholder="E-mail address"
                 onChange={this.handleChange}
                 value={email}
                 className={this.handleInputError(errors, "email")}
                 type="email"
               />
-
               <Form.Input
                 fluid
                 name="password"
@@ -89,15 +77,8 @@ class Login extends React.Component {
                 className={this.handleInputError(errors, "password")}
                 type="password"
               />
-
-              <Button
-                disabled={loading}
-                className={loading ? "loading" : ""}
-                color="blue"
-                fluid
-                size="large"
-              >
-                login
+              <Button color="blue" fluid size="large" disabled={loading} className={loading ? "loading" : ""}>
+                Log in
               </Button>
             </Segment>
           </Form>
@@ -108,7 +89,7 @@ class Login extends React.Component {
             </Message>
           )}
           <Message>
-            Don't have an account? <Link to="/register">Register</Link>
+            New to us? <Link to="/register" style={{ color: '#4183c4' }}>Sign Up</Link>
           </Message>
         </Grid.Column>
       </Grid>
