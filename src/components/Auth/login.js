@@ -49,8 +49,8 @@ class Login extends React.Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app" style={{ backgroundColor: '#f8f8f9' }}>
         <Grid.Column style={{ maxWidth: 450, backgroundColor: 'white', padding: '20px', boxShadow: '0 4px 14px 0 rgba(0,0,0,0.2)' }}>
-          <Header as="h2" color="blue" textAlign="center" style={{ marginBottom: '20px' }}>
-            <Icon name="slack hash" color="blue" />
+          <Header as="h2" color="purple" textAlign="center" style={{ marginBottom: '20px' }}>
+            <Icon name="slack hash" color="purple" />
             Log in to your account
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
@@ -77,7 +77,7 @@ class Login extends React.Component {
                 className={this.handleInputError(errors, "password")}
                 type="password"
               />
-              <Button color="blue" fluid size="large" disabled={loading} className={loading ? "loading" : ""}>
+              <Button color="purple" fluid size="large" disabled={loading} className={loading ? "loading" : ""}>
                 Log in
               </Button>
             </Segment>
@@ -89,7 +89,7 @@ class Login extends React.Component {
             </Message>
           )}
           <Message>
-            New to us? <Link to="/register" style={{ color: '#4183c4' }}>Sign Up</Link>
+            New to us? <Link to="/register" style={{ color: 'purple' }}>Sign Up</Link>
           </Message>
         </Grid.Column>
       </Grid>

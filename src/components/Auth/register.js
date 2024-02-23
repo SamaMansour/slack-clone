@@ -129,11 +129,11 @@ class Register extends React.Component {
     } = this.state;
 //adding input fields and button
     return (
-      <Grid textAlign="center" verticalAlign="middle" className="app">
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" icon color="black" textAlign="center">
-            <Icon name="coffee" color="red" />
-            Register for chai
+     <Grid textAlign="center" verticalAlign="middle" className="app" style={{ backgroundColor: '#f8f8f9' }}>
+        <Grid.Column style={{ maxWidth: 450, backgroundColor: 'white', padding: '20px', boxShadow: '0 4px 14px 0 rgba(0,0,0,0.2)' }}>
+          <Header as="h2" color="purple" textAlign="center" style={{ marginBottom: '20px' }}>
+            <Icon name="slack hash" color="purple" />
+            Create your account
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>
@@ -187,7 +187,7 @@ class Register extends React.Component {
               <Button
                 disabled={loading}
                 className={loading ? "loading" : ""}
-                color="blue"
+                color="purple"
                 fluid
                 size="large"
               >
@@ -202,7 +202,7 @@ class Register extends React.Component {
             </Message>
           )}
           <Message>
-            Already a user? <Link to="/login">Login</Link>
+            Already a user? <Link to="/login" style={{color: 'purple'}}>Login</Link>
           </Message>
         </Grid.Column>
       </Grid>
